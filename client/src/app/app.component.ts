@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -13,8 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [
     RouterOutlet, 
-    CommonModule, 
-    MatCardModule,
+    RouterLink,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule
@@ -22,19 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  title = 'client';
-  posts: any;
-
-  constructor(private http: HttpClient) {
-
-  }
-
-  ngOnInit(): void {
-    this.http.get('http://localhost:5020/api/posts').subscribe({
-      next: (response) => this.posts = response,
-      error: (e) => console.error(e),
-      complete: () => console.log('complete')
-    })
-  }
+export class AppComponent {
+  title = 'BlogBox';
+  
 }
